@@ -350,10 +350,31 @@
                             <barButtonItem image="square.stack.3d.down.right" catalog="system" id="Bj8-Sl-SYL" userLabel="Button_Sort_Tasks"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <segue destination="h4N-cc-xkL" kind="show" id="oWp-Fu-td9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+        <!--Détail-->
+        <scene sceneID="QkZ-iv-E5z">
+            <objects>
+                <viewController id="h4N-cc-xkL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bK3-24-cuZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="pvz-Rx-G8w"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Détail" leftItemsSupplementBackButton="YES" id="Tt4-g3-naD">
+                        <barButtonItem key="rightBarButtonItem" image="trash" catalog="system" id="Umy-Sq-rmR"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3HF-sg-Tzb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A1g-fy-LwB">
@@ -378,5 +399,6 @@
         <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="ellipsis" catalog="system" width="64" height="18"/>
         <image name="square.stack.3d.down.right" catalog="system" width="62" height="64"/>
+        <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
 </document>
