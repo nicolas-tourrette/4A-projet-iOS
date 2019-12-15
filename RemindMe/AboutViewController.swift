@@ -11,12 +11,15 @@ import UIKit
 class AboutViewController: UIViewController {
 
     var version = "undefined"
+    var date = "undefined"
     
     @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         versionLabel.text = version
+        dateLabel.text = date
         // Do any additional setup after loading the view.
     }
     

@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // Constantes de version
     let version = "0.1"
     let build = "1"
+    let date = "Dec 15 2019"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +24,8 @@ class ViewController: UIViewController {
         if segue.identifier == "showAbout" {
             print("Changing view to About...")
             let aboutViewController = segue.destination as! AboutViewController
-            let versionActuelle = "Version " + version + " b" + build
-            aboutViewController.version = versionActuelle
+            aboutViewController.version = "Version " + version + " b" + build
+            aboutViewController.date = "Compiled on " + date + "."
         }
     }
 }

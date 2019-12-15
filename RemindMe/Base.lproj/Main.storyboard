@@ -425,27 +425,83 @@
                                     <constraint firstAttribute="height" constant="20" id="BPt-vY-PY3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rv-QL-KNp" userLabel="laius">
+                                <rect key="frame" x="10" y="360" width="394" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="ukn-Gd-e62"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="This application has been developed by Nicolas TOURRETTE (4A IE - SQR team).  ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="About Remind Me">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".AppleSystemUIFontEmphasized"/>
+                                            <font key="NSOriginalFont" size="13" name=".AppleSystemUIFontEmphasized"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <mutableString key="content"> Remind Me is a scholar application to introduce students to iOS programmation. This app has for main goal to remind forgotten (or not) tasked to the user. With Remind Me, you will never forget your to-do tasks.  Copyright © 2019 Nicolas TOURRETTE. All rights reserved.</mutableString>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwm-Mt-qac" userLabel="dateLabel">
+                                <rect key="frame" x="10" y="564" width="394" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FfB-k2-K2J">
+                                <rect key="frame" x="0.0" y="796" width="414" height="100"/>
+                                <color key="backgroundColor" red="0.27383619546890259" green="0.54201591014862061" blue="0.87540918588638306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="RlD-pY-vcZ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Bwm-Mt-qac" firstAttribute="top" secondItem="7rv-QL-KNp" secondAttribute="bottom" constant="24" id="1wX-gg-d9l"/>
                             <constraint firstItem="fZC-uf-hnp" firstAttribute="trailing" secondItem="Mm3-OI-1sS" secondAttribute="trailing" id="9wf-3P-BsW"/>
                             <constraint firstItem="J8h-gG-YLT" firstAttribute="top" secondItem="fZC-uf-hnp" secondAttribute="bottom" constant="15" id="E77-8g-kTl"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="FfB-k2-K2J" secondAttribute="bottom" constant="-34" id="E8F-lC-g1i"/>
                             <constraint firstItem="fZC-uf-hnp" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" id="E9f-Dq-PLn"/>
                             <constraint firstItem="INy-Co-rfI" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" constant="10" id="Fo5-lM-riy"/>
                             <constraint firstItem="Mm3-OI-1sS" firstAttribute="trailing" secondItem="J8h-gG-YLT" secondAttribute="trailing" constant="10" id="H5W-JA-jG9"/>
+                            <constraint firstItem="Bwm-Mt-qac" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" constant="10" id="HXQ-ub-qNY"/>
                             <constraint firstItem="J8h-gG-YLT" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" constant="10" id="Mbd-XW-xld"/>
-                            <constraint firstItem="J8h-gG-YLT" firstAttribute="top" secondItem="fZC-uf-hnp" secondAttribute="bottom" constant="15" id="Q6z-TJ-XJh"/>
+                            <constraint firstItem="Mm3-OI-1sS" firstAttribute="trailing" secondItem="Bwm-Mt-qac" secondAttribute="trailing" constant="10" id="R1K-B7-XTA"/>
                             <constraint firstItem="INy-Co-rfI" firstAttribute="top" secondItem="J8h-gG-YLT" secondAttribute="bottom" constant="5" id="SZe-bC-A7S"/>
+                            <constraint firstItem="FfB-k2-K2J" firstAttribute="trailing" secondItem="wPo-KB-TKs" secondAttribute="trailing" id="Yr0-E0-o1L"/>
+                            <constraint firstItem="Mm3-OI-1sS" firstAttribute="trailing" secondItem="7rv-QL-KNp" secondAttribute="trailing" constant="10" id="Z9l-zv-QWY"/>
                             <constraint firstItem="fZC-uf-hnp" firstAttribute="top" secondItem="Mm3-OI-1sS" secondAttribute="top" id="aaS-lw-Hfh"/>
+                            <constraint firstItem="FfB-k2-K2J" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" id="hF0-gz-XUM"/>
+                            <constraint firstItem="7rv-QL-KNp" firstAttribute="top" secondItem="INy-Co-rfI" secondAttribute="bottom" constant="30" id="rbt-mn-8Fj">
+                                <string key="userLabel">This application has been developed by Nicolas TOURRETTE (4A IE - SQR team).  About Remind Me Remind Me is a scholar application to introduce students to iOS programmation. This app has for main goal to remind forgotten (or not) tasked to the user. With Remind Me, you will never forget your to-do tasks.  Copyright © 2019 Nicolas TOURRETTE. All rights reserved..top = Version Label.bottom + 30</string>
+                            </constraint>
                             <constraint firstItem="Mm3-OI-1sS" firstAttribute="trailing" secondItem="INy-Co-rfI" secondAttribute="trailing" constant="10" id="wEa-d8-wIs"/>
+                            <constraint firstItem="7rv-QL-KNp" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" constant="10" id="yVc-js-sHe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mm3-OI-1sS"/>
                     </view>
                     <navigationItem key="navigationItem" title="About Remind Me" id="P2k-LO-edf"/>
                     <connections>
+                        <outlet property="dateLabel" destination="Bwm-Mt-qac" id="GrR-vA-0bg"/>
                         <outlet property="versionLabel" destination="INy-Co-rfI" id="jKO-md-DwR"/>
                     </connections>
                 </viewController>
