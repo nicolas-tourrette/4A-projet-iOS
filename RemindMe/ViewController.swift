@@ -14,9 +14,14 @@ class ViewController: UIViewController {
     let version = "0.1"
     let build = "1"
     let date = "Dec 15 2019"
-
+    
+    // Outlets
+    @IBOutlet weak var addTaskButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addTaskButton.layer.cornerRadius = 25.0
         // Do any additional setup after loading the view.
     }
 
