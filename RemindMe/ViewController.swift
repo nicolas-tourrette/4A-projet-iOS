@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         addTaskButton.layer.cornerRadius = 25.0
-        // Do any additional setup after loading the view.
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

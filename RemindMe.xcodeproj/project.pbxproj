@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		843102F423A681730045CD7B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843102F323A681730045CD7B /* AboutViewController.swift */; };
 		843102F623A684570045CD7B /* remind-me-header.png in Resources */ = {isa = PBXBuildFile; fileRef = 843102F523A684570045CD7B /* remind-me-header.png */; };
+		84BE788F23AD137300B4866B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE788E23AD137300B4866B /* DetailViewController.swift */; };
+		84BE789123AD1A1600B4866B /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE789023AD1A1600B4866B /* AddTaskViewController.swift */; };
 		84D00D3923A246B700B267F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D00D3823A246B700B267F3 /* AppDelegate.swift */; };
 		84D00D3B23A246B700B267F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D00D3A23A246B700B267F3 /* SceneDelegate.swift */; };
 		84D00D3D23A246B700B267F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D00D3C23A246B700B267F3 /* ViewController.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		843102F323A681730045CD7B /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		843102F523A684570045CD7B /* remind-me-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind-me-header.png"; sourceTree = "<group>"; };
+		84BE788E23AD137300B4866B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		84BE789023AD1A1600B4866B /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		84D00D3523A246B700B267F3 /* RemindMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemindMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D00D3823A246B700B267F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D00D3A23A246B700B267F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 				84D00D3C23A246B700B267F3 /* ViewController.swift */,
 				843102F323A681730045CD7B /* AboutViewController.swift */,
 				84D00D3E23A246B700B267F3 /* Main.storyboard */,
+				84BE788E23AD137300B4866B /* DetailViewController.swift */,
+				84BE789023AD1A1600B4866B /* AddTaskViewController.swift */,
 				84D00D4423A246BE00B267F3 /* Assets.xcassets */,
 				843102F523A684570045CD7B /* remind-me-header.png */,
 				84D00D4623A246BE00B267F3 /* LaunchScreen.storyboard */,
@@ -151,8 +157,10 @@
 				84D00D3D23A246B700B267F3 /* ViewController.swift in Sources */,
 				84D00D3923A246B700B267F3 /* AppDelegate.swift in Sources */,
 				84D00D4323A246B700B267F3 /* RemindMe.xcdatamodeld in Sources */,
+				84BE788F23AD137300B4866B /* DetailViewController.swift in Sources */,
 				843102F423A681730045CD7B /* AboutViewController.swift in Sources */,
 				84D00D3B23A246B700B267F3 /* SceneDelegate.swift in Sources */,
+				84BE789123AD1A1600B4866B /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
