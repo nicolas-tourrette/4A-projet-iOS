@@ -942,6 +942,9 @@
                     <navigationItem key="navigationItem" title="Nouvelle tâche" id="a7M-bX-bdm">
                         <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="Gae-R4-gGe">
                             <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancelAction:" destination="Z1e-bO-OWg" id="FMF-Su-4ur"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

@@ -18,10 +18,18 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var cancelAddTaskButton: UIBarButtonItem!
     @IBOutlet weak var addTaskButton: UIButton!
     
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Annuler les modifications", message: "Voulez-vous vraiment annuler les modifications et revenir à la liste des tâches ?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Oui", comment: "Ceci reviendra à l'accueil."), style: .destructive, handler: { action in self.dism }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Non", comment: "Ceci gardera vos modificaitons."), style: .cancel))
+        self.present(alert, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addTaskButton.layer.cornerRadius = 20.0
+        //placeholder...
     }
     
 
