@@ -11,9 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     // Constantes de version
-    let version = "0.1"
+    let version = "0.2"
     let build = "1"
-    let date = "Dec 15 2019"
+    let date = "Jan 13 2020"
     
     // Outlets
     @IBOutlet weak var addTaskButton: UIButton!
