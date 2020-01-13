@@ -31,6 +31,9 @@ class ViewController: UIViewController {
             aboutViewController.version = "Version " + version + " b" + build
             aboutViewController.date = "Compiled on " + date + "."
         }
+        if segue.identifier == "showMenu" {
+            print("Changing view to Menu...")
+        }
     }
 }
 

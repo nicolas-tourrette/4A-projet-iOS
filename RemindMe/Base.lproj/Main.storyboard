@@ -19,12 +19,19 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Remind Me" id="6Ga-Wd-NaI">
-                                        <barButtonItem key="rightBarButtonItem" image="info.circle.fill" catalog="system" id="Goe-6b-Fi2">
-                                            <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <segue destination="fag-Ip-Vw1" kind="show" identifier="showAbout" id="9lN-1z-xvN"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem image="info.circle.fill" catalog="system" id="Goe-6b-Fi2">
+                                                <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <segue destination="fag-Ip-Vw1" kind="show" identifier="showAbout" id="9lN-1z-xvN"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="ellipsis" catalog="system" id="20M-Ti-x9g">
+                                                <connections>
+                                                    <segue destination="Qye-xb-VGx" kind="show" id="uls-hp-usV"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -747,7 +754,7 @@
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> Remind Me is a scholar application to introduce students to iOS programmation. This app has for main goal to remind forgotten (or not) tasked to the user. With Remind Me, you will never forget your to-do tasks.  Copyright © 2019-2020 Nicolas TOURRETTE. All rights reserved.</mutableString>
+                                        <string key="content"> Remind Me is a scholar application to introduce students to iOS programmation. This app has for main goal to remind forgotten (or not) tasked to the user. With Remind Me, you will never forget your to-do tasks.  Copyright © 2019-2020 Nicolas TOURRETTE. All rights reserved.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
@@ -985,6 +992,48 @@
             </objects>
             <point key="canvasLocation" x="1039" y="-530"/>
         </scene>
+        <!--Menu-->
+        <scene sceneID="pEr-wb-d92">
+            <objects>
+                <viewController title="Menu" id="Qye-xb-VGx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xqW-mP-vnJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Tk-qX-GXD">
+                                <rect key="frame" x="10" y="399" width="394" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lN1-kI-xcd">
+                                <rect key="frame" x="10" y="10" width="394" height="788"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hQy-Dk-pkv">
+                                    <rect key="frame" x="0.0" y="0.0" width="394" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title=" Test button" image="square.and.arrow.up" catalog="system">
+                                        <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                </button>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8Na-KW-scB" firstAttribute="bottom" secondItem="lN1-kI-xcd" secondAttribute="bottom" constant="10" id="Lz7-3X-hIO"/>
+                            <constraint firstItem="lN1-kI-xcd" firstAttribute="top" secondItem="8Na-KW-scB" secondAttribute="top" constant="10" id="b2p-tD-bBe"/>
+                            <constraint firstItem="8Na-KW-scB" firstAttribute="trailing" secondItem="lN1-kI-xcd" secondAttribute="trailing" constant="10" id="k8W-te-cdG"/>
+                            <constraint firstItem="lN1-kI-xcd" firstAttribute="leading" secondItem="8Na-KW-scB" secondAttribute="leading" constant="10" id="sGp-ss-wFD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Na-KW-scB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mzi-ZP-bkL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OYs-Bw-0m9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1039" y="846"/>
+        </scene>
     </scenes>
     <resources>
         <image name="alarm.fill" catalog="system" width="62" height="64"/>
@@ -996,6 +1045,7 @@
         <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
         <image name="remind-me-header.png" width="1260" height="595"/>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
         <image name="square.stack.3d.down.right" catalog="system" width="62" height="64"/>
         <image name="trash" catalog="system" width="60" height="64"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
