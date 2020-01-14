@@ -1,27 +1,32 @@
 //
-//  AboutViewController.swift
+//  MenuViewController.swift
 //  RemindMe
 //
-//  Created by Nicolas TOURRETTE on 15/12/2019.
-//  Copyright © 2019 Nicolas TOURRETTE. All rights reserved.
+//  Created by Nicolas Tourrette on 14/01/2020.
+//  Copyright © 2020 Nicolas TOURRETTE. All rights reserved.
 //
 
 import UIKit
 
-class AboutViewController: UIViewController {
-
+class MenuViewController: UIViewController {
+    
     var version = "undefined"
     var date = "undefined"
-    
-    @IBOutlet weak var versionLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        versionLabel.text = version
-        dateLabel.text = date
+        
         // Do any additional setup after loading the view.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAbout" {
+            let aboutViewController = segue.destination as! AboutViewController
+            aboutViewController.version = version
+            aboutViewController.date = date
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

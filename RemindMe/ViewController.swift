@@ -12,8 +12,8 @@ class ViewController: UIViewController {
     
     // Constantes de version
     let version = "0.2"
-    let build = "1"
-    let date = "Jan 13 2020"
+    let build = "2"
+    let date = "Jan 14 2020"
     
     // Outlets
     @IBOutlet weak var addTaskButton: UIButton!
@@ -25,14 +25,18 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let versionToPass = "Version " + version + " b" + build
+        let dateToPass = "Compiled on " + date + "."
+        
         if segue.identifier == "showAbout" {
-            print("Changing view to About...")
             let aboutViewController = segue.destination as! AboutViewController
-            aboutViewController.version = "Version " + version + " b" + build
-            aboutViewController.date = "Compiled on " + date + "."
+            aboutViewController.version = versionToPass
+            aboutViewController.date = dateToPass
         }
-        if segue.identifier == "showMenu" {
-            print("Changing view to Menu...")
+        else if segue.identifier == "showMenu" {
+            let menuViewController = segue.destination as! MenuViewController
+            menuViewController.version = versionToPass
+            menuViewController.date = dateToPass
         }
     }
 }
