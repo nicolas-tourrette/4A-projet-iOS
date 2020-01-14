@@ -39,5 +39,18 @@ class ViewController: UIViewController {
             menuViewController.date = dateToPass
         }
     }
+    
+    // This function will add a new task in the app database with CoreData
+    @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
+        // We find the addPhoto view controller
+        let sourceViewController = unwindSegue.source as! AddTaskViewController
+        // Use data from the view controller which initiated the unwind segue
+        
+        // Save action
+        if unwindSegue.identifier == "saveNewTask" {
+            print("Saving task in database...")
+        }
+    }
+
 }
 

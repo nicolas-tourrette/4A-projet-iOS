@@ -916,7 +916,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="addNewTask:" destination="Z1e-bO-OWg" eventType="touchUpInside" id="KIb-XN-sxd"/>
+                                    <segue destination="sGL-D1-hd9" kind="unwind" identifier="saveNewTask" unwindAction="unwindToHome:" id="32I-Iv-g50"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6C-ck-4zR">
@@ -984,6 +984,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wax-fU-RMO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="sGL-D1-hd9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1039" y="-530"/>
         </scene>

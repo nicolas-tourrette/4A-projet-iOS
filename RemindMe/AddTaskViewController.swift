@@ -8,20 +8,59 @@
 
 import UIKit
 
-class AddTaskViewController: UIViewController {
+class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var taskTitle: UITextField!
     @IBOutlet weak var taskDetail: UITextView!
     @IBOutlet weak var taskCategory: UIPickerView!
     @IBOutlet weak var taskDueDate: UIDatePicker!
     @IBOutlet weak var taskPriority: UIPickerView!
-    @IBOutlet weak var cancelAddTaskButton: UIBarButtonItem!
     @IBOutlet weak var addTaskButton: UIButton!
+    
+    /*
+        BEGIN ** DATAS FOR THE PICKERS IN THE VIEW: CATEGORIES AND PRIORITY
+     */
+    
+    // Datas of the task picker
+    var categories = ["Catégorie 1", "Catégorie 2", "Catégorie 3"]
+    var priorities = ["Priorité 1", "Priorité 2", "Priorité 3"]
+    // Number of slider in the picker (1 because only categories)
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    // Number of components in the unique slider: number of categories/priorities contained in the table
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == taskCategory {
+            return categories.count
+        }
+        else if pickerView == taskPriority {
+            return priorities.count
+        }
+        else {
+            return 0
+        }
+    }
+    // Give the datas to the picker
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == taskCategory {
+            return categories[row]
+        }
+        else if pickerView == taskPriority {
+            return priorities[row]
+        }
+        else {
+            return ""
+        }
+    }
+    
+    /*
+        END
+     */
     
     @IBAction func cancelAction(_ sender: Any) {
         let alert = UIAlertController(title: "Annuler les modifications ?", message: "Voulez-vous vraiment annuler les modifications et revenir à la liste des tâches ?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Oui", comment: "Ceci reviendra à l'accueil."), style: .destructive, handler: { action in self.dismiss(animated: true, completion: nil) }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Non", comment: "Ceci gardera vos modificaitons."), style: .cancel))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Non", comment: "Ceci gardera vos modifications."), style: .cancel))
         self.present(alert, animated: true)
     }
     
@@ -37,7 +76,13 @@ class AddTaskViewController: UIViewController {
         taskDetail.text = "Enter the task details..."
         taskDetail.textColor = UIColor.lightGray
         
-        //taskCategory.dataSource
+        // Adding datas to the tasks picker
+        taskCategory.delegate = self
+        taskCategory.dataSource = self
+        
+        // Adding datas to the tasks picker
+        taskPriority.delegate = self
+        taskPriority.dataSource = self
     }
     
     // When editing the placeholder text initialized in viewDidLoad(), transform the text into a black and real text
@@ -56,11 +101,6 @@ class AddTaskViewController: UIViewController {
         }
     }
     
-    // This function will add a new task in the app database with CoreData
-    @IBAction func addNewTask(_ sender: UIButton) {
-        
-    }
-
     /*
     // MARK: - Navigation
 
