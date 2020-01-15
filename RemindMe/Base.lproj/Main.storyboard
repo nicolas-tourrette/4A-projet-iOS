@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -733,28 +733,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rv-QL-KNp" userLabel="laius">
-                                <rect key="frame" x="10" y="272" width="394" height="180"/>
+                                <rect key="frame" x="10" y="272" width="394" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="ukn-Gd-e62"/>
+                                    <constraint firstAttribute="height" constant="200" id="ukn-Gd-e62"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="This application has been developed by Nicolas TOURRETTE (4A IE - SQR team).  ">
+                                    <fragment content="Cette application a été développée par Nicolas TOURRETTE (4A IE - Groupe SQR).  ">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="About Remind Me">
+                                    <fragment content="À propos de l'application">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".AppleSystemUIFontEmphasized"/>
-                                            <font key="NSOriginalFont" size="13" name=".AppleSystemUIFontEmphasized"/>
+                                            <font key="NSFont" size="18" name=".AppleSystemUIFontEmphasized"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content"> Remind Me is a scholar application to introduce students to iOS programmation. This app has for main goal to remind forgotten (or not) tasked to the user. With Remind Me, you will never forget your to-do tasks.  Copyright © 2019-2020 Nicolas TOURRETTE. All rights reserved.</string>
+                                        <mutableString key="content"> Remind Me est une application scolaire pour nous apprendre à développer sous iOS. L'application a pour principal objectif de gérer et de rappeler à votre mémoire les tâches oubliées (ou non). Avec Remind Me, vous n'oublierez plus jamais les tâches que vous avez à faire.  Copyright © 2019-2020 Nicolas TOURRETTE. Tous droits réservés.</mutableString>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
@@ -765,7 +764,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwm-Mt-qac" userLabel="dateLabel">
-                                <rect key="frame" x="10" y="476" width="394" height="16"/>
+                                <rect key="frame" x="10" y="496" width="394" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -777,10 +776,47 @@
                                     <constraint firstAttribute="height" constant="100" id="RlD-pY-vcZ"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnE-0M-bQf" userLabel="Crédits">
+                                <rect key="frame" x="10" y="527" width="394" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="g3m-hb-6tO"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Crédits">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name=".AppleSystemUIFontEmphasized"/>
+                                            <font key="NSOriginalFont" size="15" name=".AppleSystemUIFontEmphasized"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+         - Image d'entête : Remind Corp. (www.remind.com)</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Bwm-Mt-qac" firstAttribute="top" secondItem="7rv-QL-KNp" secondAttribute="bottom" constant="24" id="1wX-gg-d9l"/>
+                            <constraint firstItem="Mm3-OI-1sS" firstAttribute="trailing" secondItem="gnE-0M-bQf" secondAttribute="trailing" constant="10" id="63K-qh-1u4"/>
                             <constraint firstItem="fZC-uf-hnp" firstAttribute="trailing" secondItem="Mm3-OI-1sS" secondAttribute="trailing" id="9wf-3P-BsW"/>
                             <constraint firstItem="J8h-gG-YLT" firstAttribute="top" secondItem="fZC-uf-hnp" secondAttribute="bottom" constant="15" id="E77-8g-kTl"/>
                             <constraint firstAttribute="bottomMargin" secondItem="FfB-k2-K2J" secondAttribute="bottom" constant="-34" id="E8F-lC-g1i"/>
@@ -788,6 +824,7 @@
                             <constraint firstItem="INy-Co-rfI" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" constant="10" id="Fo5-lM-riy"/>
                             <constraint firstItem="Mm3-OI-1sS" firstAttribute="trailing" secondItem="J8h-gG-YLT" secondAttribute="trailing" constant="10" id="H5W-JA-jG9"/>
                             <constraint firstItem="Bwm-Mt-qac" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" constant="10" id="HXQ-ub-qNY"/>
+                            <constraint firstItem="gnE-0M-bQf" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" constant="10" id="Ix1-xh-YyT"/>
                             <constraint firstItem="J8h-gG-YLT" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" constant="10" id="Mbd-XW-xld"/>
                             <constraint firstItem="Mm3-OI-1sS" firstAttribute="trailing" secondItem="Bwm-Mt-qac" secondAttribute="trailing" constant="10" id="R1K-B7-XTA"/>
                             <constraint firstItem="INy-Co-rfI" firstAttribute="top" secondItem="J8h-gG-YLT" secondAttribute="bottom" constant="5" id="SZe-bC-A7S"/>
@@ -800,6 +837,7 @@
                             </constraint>
                             <constraint firstItem="Mm3-OI-1sS" firstAttribute="trailing" secondItem="INy-Co-rfI" secondAttribute="trailing" constant="10" id="wEa-d8-wIs"/>
                             <constraint firstItem="7rv-QL-KNp" firstAttribute="leading" secondItem="Mm3-OI-1sS" secondAttribute="leading" constant="10" id="yVc-js-sHe"/>
+                            <constraint firstItem="gnE-0M-bQf" firstAttribute="top" secondItem="Bwm-Mt-qac" secondAttribute="bottom" constant="15" id="zmg-SL-UwQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mm3-OI-1sS"/>
                     </view>
@@ -1014,9 +1052,6 @@
                                 <state key="normal" title="  Ajouter une catégorie" image="plus.circle.fill" catalog="system">
                                     <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="fag-Ip-Vw1" kind="show" identifier="showAbout" id="rhT-hZ-1Cf"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dv7-Ga-QqG">
                                 <rect key="frame" x="15" y="125" width="384" height="40"/>
@@ -1024,9 +1059,12 @@
                                     <constraint firstAttribute="height" constant="40" id="Ntn-ie-w7z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                <state key="normal" title="  About the app" image="info.circle.fill" catalog="system">
+                                <state key="normal" title="  À propos de l'application" image="info.circle.fill" catalog="system">
                                     <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="fag-Ip-Vw1" kind="show" identifier="showAbout" id="SYL-px-zre"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1064,6 +1102,6 @@
         <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rhT-hZ-1Cf"/>
+        <segue reference="SYL-px-zre"/>
     </inferredMetricsTieBreakers>
 </document>
