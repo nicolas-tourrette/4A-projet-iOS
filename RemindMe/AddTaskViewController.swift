@@ -17,6 +17,9 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var taskPriority: UIPickerView!
     @IBOutlet weak var addTaskButton: UIButton!
     
+    var category: String = ""
+    var priority: String = ""
+    
     /*
         BEGIN ** DATAS FOR THE PICKERS IN THE VIEW: CATEGORIES AND PRIORITY
      */
@@ -50,6 +53,18 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
         else {
             return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == taskCategory {
+            category = categories[row]
+        }
+        else if pickerView == taskPriority {
+            priority = priorities[row]
+        }
+        else {
+            print("An error has occured...")
         }
     }
     

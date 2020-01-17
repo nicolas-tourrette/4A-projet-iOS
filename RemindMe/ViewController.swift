@@ -39,6 +39,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         initCoreData()
         // Load the datas stored in database
         loadData()
+        
+        //self.todayTasksTableView.reloadData()
+        NotificationCenter.default.addObserver(self, selector: Selector(("refreshTable:")), name: NSNotification.Name(rawValue: "refresh"), object: nil)
+    }
+    
+    func refreshTable(notification: NSNotification) {
+        //println("Received Notification")
+        self.todayTasksTableView.reloadData()
     }
     
     // Initialization of Core Data
@@ -85,6 +93,28 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         // Save action
         if unwindSegue.identifier == "saveNewTask" {
             print("Saving task in database...")
+            saveData(title: sourceViewController.taskTitle.text!, description: sourceViewController.taskDetail.text!, dueDate: sourceViewController.taskDueDate.date, category: sourceViewController.category, priority: sourceViewController.priority)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refresh"), object: nil, userInfo: nil)
+        }
+    }
+    
+    func saveData(title: String, description: String, dueDate: Date, category: String, priority: String) {
+        // 2
+        let entity = NSEntityDescription.entity(forEntityName: "Task", in: managedObjectContext!)!
+        let currentItem = NSManagedObject(entity: entity, insertInto: managedObjectContext!)
+        // 3
+        currentItem.setValue(title, forKeyPath: "taskTitle")
+        currentItem.setValue(description, forKey: "taskDescription")
+        currentItem.setValue(dueDate, forKeyPath: "taskDueDate")
+        currentItem.setValue(category, forKey: "taskCategory")
+        currentItem.setValue(priority, forKey: "taskPriority")
+
+        // 4
+        do {
+            try managedObjectContext!.save()
+            managedObjects.append(currentItem)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
@@ -110,8 +140,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             colorCodeForCategory = UIColor.white
         }
         cell.taskCategory.tintColor = colorCodeForCategory
-        //let dueDateOfTask = currentItem.value(forKey: "taskDueDate") as? Date
-        //cell.XX.text = dueDateOfTask?.description
         return cell
     }
 
