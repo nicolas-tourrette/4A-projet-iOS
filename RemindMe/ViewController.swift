@@ -41,7 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         loadData()
         
         //self.todayTasksTableView.reloadData()
-        NotificationCenter.default.addObserver(self, selector: Selector(("refreshTable:")), name: NSNotification.Name(rawValue: "refresh"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: Selector(("refreshTable:")), name: NSNotification.Name(rawValue: "refresh"), object: nil)
     }
     
     func refreshTable(notification: NSNotification) {
@@ -94,7 +94,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         if unwindSegue.identifier == "saveNewTask" {
             print("Saving task in database...")
             saveData(title: sourceViewController.taskTitle.text!, description: sourceViewController.taskDetail.text!, dueDate: sourceViewController.taskDueDate.date, category: sourceViewController.category, priority: sourceViewController.priority)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refresh"), object: nil, userInfo: nil)
+            todayTasksTableView.reloadData()
         }
     }
     
@@ -128,7 +128,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         let currentItem = managedObjects[row]
         
         let titleOfTask = currentItem.value(forKeyPath: "taskTitle") as? String
-        cell.taskTitle.text = titleOfTask
+        cell.taskTitle.text = titleOfTask!
         let descriptionOfTask = currentItem.value(forKey: "taskDecription") as? String
         cell.taskDescription.text = descriptionOfTask
         let categoryOfTask = currentItem.value(forKey: "taskCategory") as? String
