@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,12 +35,21 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aujourd'hui" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvp-8a-ZZ7">
+                                <rect key="frame" x="10" y="103" width="394" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="d0J-tt-Je8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FIV-4A-nCS" userLabel="Table View_Today">
                                 <rect key="frame" x="10" y="148" width="394" height="46"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="separatorColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hwm-oI-iGT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tasksCell" id="hwm-oI-iGT" customClass="TaskTableViewCell" customModule="RemindMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="394" height="50.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hwm-oI-iGT" id="X2M-4Q-xfs">
@@ -142,7 +151,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="separatorColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2MZ-bR-1ka">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tasksCell" id="2MZ-bR-1ka" customClass="TaskTableViewCell" customModule="RemindMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="394" height="70.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2MZ-bR-1ka" id="LHU-lr-sfe">
@@ -225,6 +234,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="uj8-Ch-CF8" secondAttribute="trailing" id="yNC-C7-gVM"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskCategory" destination="H8g-rA-LNl" id="44E-ta-kuh"/>
+                                            <outlet property="taskDescription" destination="f7y-Tg-JjK" id="yDD-el-vlA"/>
+                                            <outlet property="taskTitle" destination="A6K-7T-elB" id="ZP2-jk-1k2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -243,7 +257,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="separatorColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="CwZ-F6-6DT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tasksCell" id="CwZ-F6-6DT" customClass="TaskTableViewCell" customModule="RemindMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="394" height="70.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CwZ-F6-6DT" id="ldj-oO-fCS">
@@ -343,7 +357,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="separatorColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WLr-wv-qGs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tasksCell" id="WLr-wv-qGs" customClass="TaskTableViewCell" customModule="RemindMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="394" height="70.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WLr-wv-qGs" id="0nc-ne-BGG">
@@ -445,15 +459,6 @@
                                     <segue destination="Z1e-bO-OWg" kind="show" id="fp9-eC-kdV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aujourd'hui" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvp-8a-ZZ7">
-                                <rect key="frame" x="10" y="103" width="394" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="d0J-tt-Je8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -501,6 +506,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addTaskButton" destination="03Y-5L-8Oy" id="tsT-Aq-TBG"/>
+                        <outlet property="laterTasksTableView" destination="N29-hO-D59" id="oHf-5V-uQJ"/>
+                        <outlet property="sevenNextDaysTasksTableView" destination="09K-0M-e5z" id="vqd-yG-z0c"/>
+                        <outlet property="todayTasksTableView" destination="FIV-4A-nCS" id="0lh-dp-u4A"/>
+                        <outlet property="tomorrowTasksTableView" destination="z94-mc-PU0" id="xJW-wn-sFJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -753,7 +762,7 @@
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> Remind Me est une application scolaire pour nous apprendre à développer sous iOS. L'application a pour principal objectif de gérer et de rappeler à votre mémoire les tâches oubliées (ou non). Avec Remind Me, vous n'oublierez plus jamais les tâches que vous avez à faire.  Copyright © 2019-2020 Nicolas TOURRETTE. Tous droits réservés.</mutableString>
+                                        <string key="content"> Remind Me est une application scolaire pour nous apprendre à développer sous iOS. L'application a pour principal objectif de gérer et de rappeler à votre mémoire les tâches oubliées (ou non). Avec Remind Me, vous n'oublierez plus jamais les tâches que vous avez à faire.  Copyright © 2019-2020 Nicolas TOURRETTE. Tous droits réservés.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
@@ -1102,6 +1111,6 @@ Cg
         <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SYL-px-zre"/>
+        <segue reference="9lN-1z-xvN"/>
     </inferredMetricsTieBreakers>
 </document>

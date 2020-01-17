@@ -18,6 +18,7 @@
 		84D00D4323A246B700B267F3 /* RemindMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84D00D4123A246B700B267F3 /* RemindMe.xcdatamodeld */; };
 		84D00D4523A246BE00B267F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D00D4423A246BE00B267F3 /* Assets.xcassets */; };
 		84D00D4823A246BE00B267F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D00D4623A246BE00B267F3 /* LaunchScreen.storyboard */; };
+		DD30235623D1E3B800EFF814 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD30235523D1E3B800EFF814 /* TaskTableViewCell.swift */; };
 		DD692BB923CE0B1E009C9211 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD692BB823CE0B1E009C9211 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		84D00D4423A246BE00B267F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84D00D4723A246BE00B267F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84D00D4923A246BE00B267F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD30235523D1E3B800EFF814 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		DD692BB823CE0B1E009C9211 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				84D00D3823A246B700B267F3 /* AppDelegate.swift */,
 				84D00D3A23A246B700B267F3 /* SceneDelegate.swift */,
 				84D00D3C23A246B700B267F3 /* ViewController.swift */,
+				DD30235523D1E3B800EFF814 /* TaskTableViewCell.swift */,
 				DD692BB823CE0B1E009C9211 /* MenuViewController.swift */,
 				843102F323A681730045CD7B /* AboutViewController.swift */,
 				84D00D3E23A246B700B267F3 /* Main.storyboard */,
@@ -159,6 +162,7 @@
 			files = (
 				84D00D3D23A246B700B267F3 /* ViewController.swift in Sources */,
 				84D00D3923A246B700B267F3 /* AppDelegate.swift in Sources */,
+				DD30235623D1E3B800EFF814 /* TaskTableViewCell.swift in Sources */,
 				84D00D4323A246B700B267F3 /* RemindMe.xcdatamodeld in Sources */,
 				84BE788F23AD137300B4866B /* DetailViewController.swift in Sources */,
 				843102F423A681730045CD7B /* AboutViewController.swift in Sources */,
