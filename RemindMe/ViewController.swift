@@ -36,26 +36,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         
         addTaskButton.layer.cornerRadius = 25.0
         
+        todayTasksTableView.delegate = self
+        todayTasksTableView.dataSource = self
         tomorrowTasksTableView.delegate = self
         tomorrowTasksTableView.dataSource = self
+        sevenNextDaysTasksTableView.delegate = self
+        sevenNextDaysTasksTableView.dataSource = self
+        laterTasksTableView.delegate = self
+        laterTasksTableView.dataSource = self
         
         // Initialization of Core Data in the view
         initCoreData()
         // Load the datas stored in database
         loadData()
-        
-        //self.todayTasksTableView.reloadData()
-        //NotificationCenter.default.addObserver(self, selector: Selector(("refreshTable:")), name: NSNotification.Name(rawValue: "refresh"), object: nil)
     }
     
     /*
         MARK: - CORE DATA PART
      */
-    
-    func refreshTable(notification: NSNotification) {
-        //println("Received Notification")
-        self.tomorrowTasksTableView.reloadData()
-    }
     
     // Initialization of Core Data
     func initCoreData () {
