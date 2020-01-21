@@ -19,6 +19,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var editTaskButton: UIButton!
     @IBOutlet weak var markTaskAsFinishedSwitch: UISwitch!
     
+    var titleOfTask = ""
+    var detailOfTask = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

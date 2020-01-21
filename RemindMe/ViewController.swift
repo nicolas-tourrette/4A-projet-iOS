@@ -27,13 +27,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     @IBOutlet weak var sevenNextDaysTasksTableView: UITableView!
     @IBOutlet weak var laterTasksTableView: UITableView!
     
+    /*
+        MARK: - VIEW DID LOAD
+    */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addTaskButton.layer.cornerRadius = 25.0
         
-        todayTasksTableView.delegate = self
-        todayTasksTableView.dataSource = self
+        tomorrowTasksTableView.delegate = self
+        tomorrowTasksTableView.dataSource = self
         
         // Initialization of Core Data in the view
         initCoreData()
@@ -44,9 +48,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         //NotificationCenter.default.addObserver(self, selector: Selector(("refreshTable:")), name: NSNotification.Name(rawValue: "refresh"), object: nil)
     }
     
+    /*
+        MARK: - CORE DATA PART
+     */
+    
     func refreshTable(notification: NSNotification) {
         //println("Received Notification")
-        self.todayTasksTableView.reloadData()
+        self.tomorrowTasksTableView.reloadData()
     }
     
     // Initialization of Core Data
@@ -67,7 +75,63 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+    
+    func saveData(title: String, description: String, dueDate: Date, category: String, priority: String, achivement: Bool = false) {
+        // 2
+        let entity = NSEntityDescription.entity(forEntityName: "Task", in: managedObjectContext!)!
+        let currentItem = NSManagedObject(entity: entity, insertInto: managedObjectContext!)
+        // 3
+        currentItem.setValue(title, forKeyPath: "taskTitle")
+        currentItem.setValue(description, forKey: "taskDescription")
+        currentItem.setValue(dueDate, forKeyPath: "taskDueDate")
+        currentItem.setValue(category, forKey: "taskCategory")
+        currentItem.setValue(priority, forKey: "taskPriority")
+        currentItem.setValue(achivement, forKey: "taskAchived")
 
+        // 4
+        do {
+            try managedObjectContext!.save()
+            managedObjects.append(currentItem)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    /*
+        MARK: - TABLE VIEW GESTURE
+     */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return managedObjects.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tasksCell", for: indexPath) as! TaskTableViewCell
+        let row = indexPath.row
+        let currentItem = managedObjects[row]
+        
+        let titleOfTask = currentItem.value(forKeyPath: "taskTitle") as? String
+        
+        let descriptionOfTask = currentItem.value(forKey: "taskDescription") as? String
+        
+        let categoryOfTask = currentItem.value(forKey: "taskCategory") as? String
+        var colorCodeForCategory: UIColor = UIColor.white
+        switch categoryOfTask {
+            case "Catégorie 2":
+                colorCodeForCategory = UIColor.brown
+            default:
+                colorCodeForCategory = UIColor.white
+        }
+        cell.taskTitle.text = titleOfTask
+        cell.taskDescription.text = descriptionOfTask
+        cell.taskCategory.tintColor = colorCodeForCategory
+        return cell
+    }
+    
+    /*
+     MARK: - SEGUES
+     */
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let versionToPass = "Version " + version + " b" + build
         let dateToPass = "Compiled on " + date + "."
@@ -82,6 +146,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             menuViewController.version = versionToPass
             menuViewController.date = dateToPass
         }
+        else if segue.identifier == "taskDetails" {
+            let detailViewController = segue.destination as! DetailViewController
+            // HOW TO PASS DATAS TO THE DETAIL VIEW ??
+            /*let myIndexPath = self.todayTasksTableView.indexPathForSelectedRow!
+            let row = myIndexPath.row
+            detailViewController.titleOfTask =
+            */
+        }
+        else{
+            print("Action inconnue...")
+        }
     }
     
     // This function will add a new task in the app database with Core Data
@@ -92,55 +167,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         
         // Save action
         if unwindSegue.identifier == "saveNewTask" {
-            print("Saving task in database...")
-            saveData(title: sourceViewController.taskTitle.text!, description: sourceViewController.taskDetail.text!, dueDate: sourceViewController.taskDueDate.date, category: sourceViewController.category, priority: sourceViewController.priority)
-            todayTasksTableView.reloadData()
+            print("Saving new task in database...")
+            saveData(title: sourceViewController.taskTitle.text!, description: sourceViewController.taskDetail.text, dueDate: sourceViewController.taskDueDate.date, category: sourceViewController.category, priority: sourceViewController.priority)
+            //todayTasksTableView.reloadData()
         }
-    }
-    
-    func saveData(title: String, description: String, dueDate: Date, category: String, priority: String) {
-        // 2
-        let entity = NSEntityDescription.entity(forEntityName: "Task", in: managedObjectContext!)!
-        let currentItem = NSManagedObject(entity: entity, insertInto: managedObjectContext!)
-        // 3
-        currentItem.setValue(title, forKeyPath: "taskTitle")
-        currentItem.setValue(description, forKey: "taskDescription")
-        currentItem.setValue(dueDate, forKeyPath: "taskDueDate")
-        currentItem.setValue(category, forKey: "taskCategory")
-        currentItem.setValue(priority, forKey: "taskPriority")
-
-        // 4
-        do {
-            try managedObjectContext!.save()
-            managedObjects.append(currentItem)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+        else if unwindSegue.identifier == "saveTask" {
+            print("Editing an existing task...")
+            // TO BE DONE
         }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return managedObjects.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tasksCell", for: indexPath) as! TaskTableViewCell
-        let row = indexPath.row
-        let currentItem = managedObjects[row]
-        
-        let titleOfTask = currentItem.value(forKeyPath: "taskTitle") as? String
-        cell.taskTitle.text = titleOfTask!
-        let descriptionOfTask = currentItem.value(forKey: "taskDecription") as? String
-        cell.taskDescription.text = descriptionOfTask
-        let categoryOfTask = currentItem.value(forKey: "taskCategory") as? String
-        var colorCodeForCategory: UIColor = UIColor.white
-        switch categoryOfTask {
-        case "Catégorie 1":
-            colorCodeForCategory = UIColor.brown
-        default:
-            colorCodeForCategory = UIColor.white
+        else{
+            print("Action inconnue...")
         }
-        cell.taskCategory.tintColor = colorCodeForCategory
-        return cell
     }
 
 }
