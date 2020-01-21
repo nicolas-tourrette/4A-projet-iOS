@@ -106,26 +106,54 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tasksCell", for: indexPath) as! TaskTableViewCell
+        // Select the row of the task item
         let row = indexPath.row
         let currentItem = managedObjects[row]
         
-        let titleOfTask = currentItem.value(forKeyPath: "taskTitle") as? String
+        var cellIdentifier = ""
+        let date = currentItem.value(forKeyPath: "taskDueDate") as! Date
+        let dateNow = Date()
         
-        let descriptionOfTask = currentItem.value(forKey: "taskDescription") as? String
-        
-        let categoryOfTask = currentItem.value(forKey: "taskCategory") as? String
-        var colorCodeForCategory: UIColor = UIColor.white
-        switch categoryOfTask {
-            case "Catégorie 2":
-                colorCodeForCategory = UIColor.brown
-            default:
-                colorCodeForCategory = UIColor.white
+        if date == dateNow {
+            cellIdentifier = "todayTasksCell"
         }
-        cell.taskTitle.text = titleOfTask
-        cell.taskDescription.text = descriptionOfTask
-        cell.taskCategory.tintColor = colorCodeForCategory
-        return cell
+        else if date > dateNow && date < dateNow.addingTimeInterval(3600*24) {
+            cellIdentifier = "tomorrowTasksCell"
+        }
+        else if date > dateNow.addingTimeInterval(3600*24) && date < dateNow.addingTimeInterval(7*3600*24) {
+            cellIdentifier = "sevenDaysTasksCell"
+        }
+        else if date > dateNow.addingTimeInterval(14*3600*24) {
+            cellIdentifier = "laterTasksCell"
+        }
+        else{
+            print("Date ne rentrant pas dans les conditions...")
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell
+        
+        if cell != nil {
+            let titleOfTask = currentItem.value(forKeyPath: "taskTitle") as? String
+            
+            let descriptionOfTask = currentItem.value(forKey: "taskDescription") as? String
+            
+            let categoryOfTask = currentItem.value(forKey: "taskCategory") as? String
+            var colorCodeForCategory: UIColor = UIColor.white
+            switch categoryOfTask {
+                case "Catégorie 2":
+                    colorCodeForCategory = UIColor.brown
+                default:
+                    colorCodeForCategory = UIColor.white
+            }
+            cell!.taskTitle.text = titleOfTask
+            cell!.taskDescription.text = descriptionOfTask
+            cell!.taskCategory.tintColor = colorCodeForCategory
+            return cell!
+        }
+        else {
+            print("Pas de cellule !")
+            return cell!
+        }
     }
     
     /*
