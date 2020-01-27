@@ -22,9 +22,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     
     // Outlets
     @IBOutlet weak var addTaskButton: UIButton!
-    @IBOutlet weak var todayTasksTableView: UITableView!
-    @IBOutlet weak var tomorrowTasksTableView: UITableView!
-    @IBOutlet weak var sevenNextDaysTasksTableView: UITableView!
+    @IBOutlet weak var thisWeekTasksTableView: UITableView!
+    @IBOutlet weak var nextWeekTasksTableView: UITableView!
     @IBOutlet weak var laterTasksTableView: UITableView!
     
     /*
@@ -36,12 +35,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         
         addTaskButton.layer.cornerRadius = 25.0
         
-        todayTasksTableView.delegate = self
-        todayTasksTableView.dataSource = self
-        tomorrowTasksTableView.delegate = self
-        tomorrowTasksTableView.dataSource = self
-        sevenNextDaysTasksTableView.delegate = self
-        sevenNextDaysTasksTableView.dataSource = self
+        thisWeekTasksTableView.delegate = self
+        thisWeekTasksTableView.dataSource = self
+        nextWeekTasksTableView.delegate = self
+        nextWeekTasksTableView.dataSource = self
         laterTasksTableView.delegate = self
         laterTasksTableView.dataSource = self
         
@@ -108,50 +105,44 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         let row = indexPath.row
         let currentItem = managedObjects[row]
         
-        var cellIdentifier = ""
         let date = currentItem.value(forKeyPath: "taskDueDate") as! Date
         let dateNow = Date()
         
-        if date == dateNow {
-            cellIdentifier = "todayTasksCell"
-        }
-        else if date > dateNow && date < dateNow.addingTimeInterval(3600*24) {
-            cellIdentifier = "tomorrowTasksCell"
-        }
-        else if date > dateNow.addingTimeInterval(3600*24) && date < dateNow.addingTimeInterval(7*3600*24) {
-            cellIdentifier = "sevenDaysTasksCell"
-        }
-        else if date > dateNow.addingTimeInterval(14*3600*24) {
-            cellIdentifier = "laterTasksCell"
-        }
-        else{
-            print("Date ne rentrant pas dans les conditions...")
-        }
+        var cell: ThisWeekTaskTableViewCell
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell
-        
-        if cell != nil {
-            let titleOfTask = currentItem.value(forKeyPath: "taskTitle") as? String
-            
-            let descriptionOfTask = currentItem.value(forKey: "taskDescription") as? String
-            
-            let categoryOfTask = currentItem.value(forKey: "taskCategory") as? String
-            var colorCodeForCategory: UIColor = UIColor.white
-            switch categoryOfTask {
-                case "Catégorie 2":
-                    colorCodeForCategory = UIColor.brown
-                default:
-                    colorCodeForCategory = UIColor.white
-            }
-            cell!.taskTitle.text = titleOfTask
-            cell!.taskDescription.text = descriptionOfTask
-            cell!.taskCategory.tintColor = colorCodeForCategory
-            return cell!
+        if date <= dateNow.addingTimeInterval(7*3600*24) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "thisWeekTasksCell", for: indexPath) as! ThisWeekTaskTableViewCell
         }
+        else if date > dateNow.addingTimeInterval(7*3600*24) && date <= dateNow.addingTimeInterval(14*3600*24) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "nextWeekTasksCell", for: indexPath) as! ThisWeekTaskTableViewCell
+        }
+        //else if date > dateNow.addingTimeInterval(14*3600*24) {
         else {
-            print("Pas de cellule !")
-            return cell!
+            cell = tableView.dequeueReusableCell(withIdentifier: "laterTasksCell", for: indexPath) as! ThisWeekTaskTableViewCell
         }
+        /*else{
+            print("Date ne rentrant pas dans les conditions. Elle est probablement dépassée...")
+        }*/
+        
+        let titleOfTask = currentItem.value(forKeyPath: "taskTitle") as? String
+        
+        let descriptionOfTask = currentItem.value(forKey: "taskDescription") as? String
+        
+        let categoryOfTask = currentItem.value(forKey: "taskCategory") as? String
+        var colorCodeForCategory: UIColor = UIColor.white
+        switch categoryOfTask {
+            case "Catégorie 2":
+                colorCodeForCategory = UIColor.brown
+            default:
+                colorCodeForCategory = UIColor.white
+        }
+        cell.taskTitle.text = titleOfTask
+        if date <= dateNow {
+            cell.taskTitle.textColor = UIColor.red
+        }
+        cell.taskDescription.text = descriptionOfTask
+        cell.taskCategory.tintColor = colorCodeForCategory
+        return cell
     }
     
     /*
@@ -195,7 +186,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         if unwindSegue.identifier == "saveNewTask" {
             print("Saving new task in database...")
             saveData(title: sourceViewController.taskTitle.text!, description: sourceViewController.taskDetail.text, dueDate: sourceViewController.taskDueDate.date, category: sourceViewController.category, priority: sourceViewController.priority)
-            //todayTasksTableView.reloadData()
         }
         else if unwindSegue.identifier == "saveTask" {
             print("Editing an existing task...")
