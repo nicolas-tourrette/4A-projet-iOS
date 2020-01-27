@@ -12,9 +12,9 @@ import CoreData
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     // Constantes de version
-    let version = "0.2"
-    let build = "3"
-    let date = "Jan 15 2020"
+    let version = "0.5"
+    let build = "150"
+    let date = "Jan 27 2020"
     
     // Management objects for Core Data
     var managedObjectContext:NSManagedObjectContext?
@@ -23,8 +23,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     // Outlets
     @IBOutlet weak var addTaskButton: UIButton!
     @IBOutlet weak var thisWeekTasksTableView: UITableView!
-    @IBOutlet weak var nextWeekTasksTableView: UITableView!
-    @IBOutlet weak var laterTasksTableView: UITableView!
     
     /*
         MARK: - VIEW DID LOAD
@@ -37,10 +35,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         
         thisWeekTasksTableView.delegate = self
         thisWeekTasksTableView.dataSource = self
-        nextWeekTasksTableView.delegate = self
-        nextWeekTasksTableView.dataSource = self
-        laterTasksTableView.delegate = self
-        laterTasksTableView.dataSource = self
         
         // Initialization of Core Data in the view
         initCoreData()
@@ -62,6 +56,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     func loadData() {
         // Step 1: Create a fetch request meeting the criteria "Item".
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Task")
+        let sortDescriptor = NSSortDescriptor(key: "taskDueDate", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         // Step 2: Fetch and store the data into the managed objects
         do {
             // Returns an array
@@ -105,25 +101,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         let row = indexPath.row
         let currentItem = managedObjects[row]
         
+        var cell: ThisWeekTaskTableViewCell?
+        
+        cell = tableView.dequeueReusableCell(withIdentifier: "thisWeekTasksCell", for: indexPath) as? ThisWeekTaskTableViewCell
+        remplissageCellule(currentItem: currentItem, cell: cell)
+        
+        return cell!
+    }
+    
+    func remplissageCellule(currentItem: NSManagedObject, cell: ThisWeekTaskTableViewCell?){
         let date = currentItem.value(forKeyPath: "taskDueDate") as! Date
         let dateNow = Date()
         
-        var cell: ThisWeekTaskTableViewCell
-        
-        if date <= dateNow.addingTimeInterval(7*3600*24) {
-            cell = tableView.dequeueReusableCell(withIdentifier: "thisWeekTasksCell", for: indexPath) as! ThisWeekTaskTableViewCell
-        }
-        else if date > dateNow.addingTimeInterval(7*3600*24) && date <= dateNow.addingTimeInterval(14*3600*24) {
-            cell = tableView.dequeueReusableCell(withIdentifier: "nextWeekTasksCell", for: indexPath) as! ThisWeekTaskTableViewCell
-        }
-        else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "laterTasksCell", for: indexPath) as! ThisWeekTaskTableViewCell
-        }
-        
         let titleOfTask = currentItem.value(forKeyPath: "taskTitle") as? String
-        
         let descriptionOfTask = currentItem.value(forKey: "taskDescription") as? String
-        
         let categoryOfTask = currentItem.value(forKey: "taskCategory") as? String
         var colorCodeForCategory: UIColor = UIColor.white
         switch categoryOfTask {
@@ -132,13 +123,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             default:
                 colorCodeForCategory = UIColor.white
         }
-        cell.taskTitle.text = titleOfTask
+        cell!.taskTitle.text = titleOfTask
         if date <= dateNow {
-            cell.taskTitle.textColor = UIColor.red
+            cell!.taskTitle.textColor = UIColor.red
         }
-        cell.taskDescription.text = descriptionOfTask
-        cell.taskCategory.tintColor = colorCodeForCategory
-        return cell
+        cell!.taskDescription.text = descriptionOfTask
+        cell!.taskCategory.tintColor = colorCodeForCategory
     }
     
     /*
@@ -161,11 +151,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         }
         else if segue.identifier == "taskDetails" {
             let detailViewController = segue.destination as! DetailViewController
-            // HOW TO PASS DATAS TO THE DETAIL VIEW ??
-            /*let myIndexPath = self.todayTasksTableView.indexPathForSelectedRow!
+            let myIndexPath = self.thisWeekTasksTableView.indexPathForSelectedRow!
             let row = myIndexPath.row
-            detailViewController.titleOfTask =
-            */
+            let currentItem = managedObjects[row]
+            detailViewController.titleOfTask = currentItem.value(forKeyPath: "taskTitle") as! String
+            detailViewController.detailOfTask = currentItem.value(forKeyPath: "taskDescription") as! String
+            detailViewController.categoryOfTask = currentItem.value(forKeyPath: "taskCategory") as! String
+            detailViewController.priorityOfTask = currentItem.value(forKeyPath: "taskPriority") as! String
         }
         else{
             print("Action inconnue...")
@@ -182,9 +174,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         if unwindSegue.identifier == "saveNewTask" {
             print("Saving new task in database...")
             saveData(title: sourceViewController.taskTitle.text!, description: sourceViewController.taskDetail.text, dueDate: sourceViewController.taskDueDate.date, category: sourceViewController.category, priority: sourceViewController.priority)
+            loadData()
+            thisWeekTasksTableView.reloadData()
         }
         else if unwindSegue.identifier == "saveTask" {
             print("Editing an existing task...")
+            loadData()
+            thisWeekTasksTableView.reloadData()
             // TO BE DONE
         }
         else{

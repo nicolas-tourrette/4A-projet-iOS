@@ -98,6 +98,9 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         // Adding datas to the tasks picker
         taskPriority.delegate = self
         taskPriority.dataSource = self
+        
+        category = categories[0]
+        priority = priorities[0]
     }
     
     // When editing the placeholder text initialized in viewDidLoad(), transform the text into a black and real text

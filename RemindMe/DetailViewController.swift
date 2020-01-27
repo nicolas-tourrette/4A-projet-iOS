@@ -13,6 +13,8 @@ class DetailViewController: UIViewController {
     // Outlets
     @IBOutlet weak var taskTitle: UILabel!
     @IBOutlet weak var taskDetail: UILabel!
+    @IBOutlet weak var taskCategory: UILabel!
+    @IBOutlet weak var taskPriority: UILabel!
     @IBOutlet weak var taskTimerReminder: UILabel!
     @IBOutlet weak var deleteTaskButton: UIBarButtonItem!
     @IBOutlet weak var changeReminderButton: UIButton!
@@ -21,11 +23,18 @@ class DetailViewController: UIViewController {
     
     var titleOfTask = ""
     var detailOfTask = ""
+    var categoryOfTask = ""
+    var priorityOfTask = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         editTaskButton.layer.cornerRadius = 25.0
+        
+        taskTitle.text = titleOfTask
+        taskDetail.text = detailOfTask
+        taskCategory.text = categoryOfTask
+        taskPriority.text = priorityOfTask
     }
     
 

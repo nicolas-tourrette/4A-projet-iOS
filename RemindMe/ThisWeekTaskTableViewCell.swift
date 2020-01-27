@@ -10,9 +10,10 @@ import UIKit
 
 class ThisWeekTaskTableViewCell: UITableViewCell {
     
-    
+    @IBOutlet weak var taskTitle: UILabel!
     @IBOutlet weak var taskDescription: UILabel!
     @IBOutlet weak var taskCategory: UIImageView!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
