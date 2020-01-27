@@ -116,13 +116,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         else if date > dateNow.addingTimeInterval(7*3600*24) && date <= dateNow.addingTimeInterval(14*3600*24) {
             cell = tableView.dequeueReusableCell(withIdentifier: "nextWeekTasksCell", for: indexPath) as! ThisWeekTaskTableViewCell
         }
-        //else if date > dateNow.addingTimeInterval(14*3600*24) {
         else {
             cell = tableView.dequeueReusableCell(withIdentifier: "laterTasksCell", for: indexPath) as! ThisWeekTaskTableViewCell
         }
-        /*else{
-            print("Date ne rentrant pas dans les conditions. Elle est probablement dépassée...")
-        }*/
         
         let titleOfTask = currentItem.value(forKeyPath: "taskTitle") as? String
         
