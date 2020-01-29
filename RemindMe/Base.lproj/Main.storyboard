@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,18 +41,27 @@
                                                             <rect key="frame" x="60" y="0.0" width="214" height="50.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre de la tâche" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HO2-zx-cuX">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="214" height="31"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="214" height="11"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ma très très très longue description de ma tâche" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5I-Kx-v7l">
-                                                                    <rect key="frame" x="0.0" y="31" width="214" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="11" width="214" height="19.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="19.5" id="i2X-uU-uIT"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XJ-jt-zLH">
+                                                                    <rect key="frame" x="0.0" y="30.5" width="214" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="qJ8-9m-h1D"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -62,7 +71,8 @@
                                                                 <constraint firstItem="w5I-Kx-v7l" firstAttribute="top" secondItem="HO2-zx-cuX" secondAttribute="bottom" id="LGv-jI-nuv"/>
                                                                 <constraint firstItem="HO2-zx-cuX" firstAttribute="leading" secondItem="blm-ps-V4R" secondAttribute="leading" id="T6J-jm-buT"/>
                                                                 <constraint firstAttribute="trailing" secondItem="w5I-Kx-v7l" secondAttribute="trailing" id="ZMQ-JD-y4f"/>
-                                                                <constraint firstAttribute="bottom" secondItem="w5I-Kx-v7l" secondAttribute="bottom" id="nic-x6-5Df"/>
+                                                                <constraint firstAttribute="trailing" secondItem="8XJ-jt-zLH" secondAttribute="trailing" id="dUu-8u-wnj"/>
+                                                                <constraint firstItem="8XJ-jt-zLH" firstAttribute="leading" secondItem="blm-ps-V4R" secondAttribute="leading" id="deL-0f-I32"/>
                                                                 <constraint firstItem="w5I-Kx-v7l" firstAttribute="leading" secondItem="blm-ps-V4R" secondAttribute="leading" id="tQt-I8-IYQ"/>
                                                                 <constraint firstItem="HO2-zx-cuX" firstAttribute="top" secondItem="blm-ps-V4R" secondAttribute="top" id="yaq-KP-68e"/>
                                                             </constraints>
@@ -104,6 +114,7 @@
                                         <connections>
                                             <outlet property="taskCategory" destination="zQW-QB-Whb" id="raU-ii-qbA"/>
                                             <outlet property="taskDescription" destination="w5I-Kx-v7l" id="SCt-zN-x3O"/>
+                                            <outlet property="taskDueDate" destination="8XJ-jt-zLH" id="JBw-Rf-25s"/>
                                             <outlet property="taskTitle" destination="HO2-zx-cuX" id="vLC-qW-sa2"/>
                                             <segue destination="h4N-cc-xkL" kind="show" identifier="taskDetails" id="cDc-7c-pGy"/>
                                         </connections>
@@ -217,7 +228,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajouter un rappel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DvC-Sa-IfR">
-                                <rect key="frame" x="10" y="293" width="394" height="25"/>
+                                <rect key="frame" x="10" y="343" width="394" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="6aA-Mu-Bwf"/>
                                 </constraints>
@@ -226,7 +237,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuy-ys-EM4">
-                                <rect key="frame" x="10" y="333" width="394" height="30"/>
+                                <rect key="frame" x="10" y="383" width="394" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer rappel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9c8-EK-hnO">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="30"/>
@@ -281,7 +292,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catégorie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBf-nB-eeJ">
-                                <rect key="frame" x="10" y="388" width="394" height="25"/>
+                                <rect key="frame" x="10" y="438" width="394" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="pqa-7t-Mp9"/>
                                 </constraints>
@@ -290,7 +301,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catégorie de la tâche" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s80-na-erZ">
-                                <rect key="frame" x="10" y="423" width="394" height="25"/>
+                                <rect key="frame" x="10" y="473" width="394" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="wP8-sN-qFP"/>
                                 </constraints>
@@ -299,7 +310,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priorité" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFM-dM-ced">
-                                <rect key="frame" x="10" y="473" width="394" height="25"/>
+                                <rect key="frame" x="10" y="523" width="394" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="0xy-ez-xTu"/>
                                 </constraints>
@@ -308,9 +319,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priorité de la tâche" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjG-4H-cQu">
-                                <rect key="frame" x="10" y="508" width="394" height="25"/>
+                                <rect key="frame" x="10" y="558" width="394" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="lta-4T-z3e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0n-Cv-9Sv">
+                                <rect key="frame" x="10" y="293" width="394" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Sfw-9q-RF4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -329,15 +349,17 @@
                             <constraint firstItem="MHT-d9-Y2W" firstAttribute="leading" secondItem="pvz-Rx-G8w" secondAttribute="leading" constant="10" id="JvC-zK-dd5"/>
                             <constraint firstItem="S8F-xt-Fa6" firstAttribute="top" secondItem="pvz-Rx-G8w" secondAttribute="top" id="Ky1-DO-SZh"/>
                             <constraint firstItem="jBY-xx-EFT" firstAttribute="leading" secondItem="pvz-Rx-G8w" secondAttribute="leading" constant="10" id="Mvu-rs-4WE"/>
+                            <constraint firstItem="S0n-Cv-9Sv" firstAttribute="leading" secondItem="pvz-Rx-G8w" secondAttribute="leading" constant="10" id="N7d-3C-WVK"/>
                             <constraint firstItem="pvz-Rx-G8w" firstAttribute="trailing" secondItem="cuy-ys-EM4" secondAttribute="trailing" constant="10" id="NRH-wb-98Y"/>
                             <constraint firstItem="pvz-Rx-G8w" firstAttribute="trailing" secondItem="MHT-d9-Y2W" secondAttribute="trailing" constant="10" id="PqB-V4-dQr"/>
-                            <constraint firstItem="DvC-Sa-IfR" firstAttribute="top" secondItem="r8A-i5-Qzv" secondAttribute="bottom" constant="25" id="Qsg-Tc-Guo"/>
+                            <constraint firstItem="S0n-Cv-9Sv" firstAttribute="top" secondItem="r8A-i5-Qzv" secondAttribute="bottom" constant="25" id="Qsg-Tc-Guo"/>
                             <constraint firstItem="r8A-i5-Qzv" firstAttribute="leading" secondItem="pvz-Rx-G8w" secondAttribute="leading" constant="10" id="TJI-8z-sBj"/>
                             <constraint firstItem="qBf-nB-eeJ" firstAttribute="top" secondItem="cuy-ys-EM4" secondAttribute="bottom" constant="25" id="UEh-7g-uK9"/>
                             <constraint firstItem="YFM-dM-ced" firstAttribute="leading" secondItem="pvz-Rx-G8w" secondAttribute="leading" constant="10" id="UKx-8y-tLC"/>
                             <constraint firstItem="S8F-xt-Fa6" firstAttribute="trailing" secondItem="pvz-Rx-G8w" secondAttribute="trailing" id="Vdg-N7-rBd"/>
                             <constraint firstItem="tjG-4H-cQu" firstAttribute="top" secondItem="YFM-dM-ced" secondAttribute="bottom" constant="10" id="cwM-W9-ZFS"/>
                             <constraint firstItem="pvz-Rx-G8w" firstAttribute="trailing" secondItem="jBY-xx-EFT" secondAttribute="trailing" constant="10" id="g3g-P4-LND"/>
+                            <constraint firstItem="DvC-Sa-IfR" firstAttribute="top" secondItem="S0n-Cv-9Sv" secondAttribute="bottom" constant="25" id="gwX-fj-phL"/>
                             <constraint firstItem="MHT-d9-Y2W" firstAttribute="top" secondItem="S8F-xt-Fa6" secondAttribute="bottom" constant="7" id="hTj-nw-wMM"/>
                             <constraint firstItem="pvz-Rx-G8w" firstAttribute="trailing" secondItem="r8A-i5-Qzv" secondAttribute="trailing" constant="10" id="jEV-QK-jbl"/>
                             <constraint firstItem="pvz-Rx-G8w" firstAttribute="trailing" secondItem="JXN-lG-oEh" secondAttribute="trailing" constant="20" id="jaE-yC-wOA"/>
@@ -345,6 +367,7 @@
                             <constraint firstItem="pvz-Rx-G8w" firstAttribute="bottom" secondItem="jBY-xx-EFT" secondAttribute="bottom" constant="100" id="l37-DJ-lgh"/>
                             <constraint firstItem="pvz-Rx-G8w" firstAttribute="trailing" secondItem="DvC-Sa-IfR" secondAttribute="trailing" constant="10" id="l4A-42-z8q"/>
                             <constraint firstItem="s80-na-erZ" firstAttribute="leading" secondItem="pvz-Rx-G8w" secondAttribute="leading" constant="10" id="mmf-aV-ndO"/>
+                            <constraint firstItem="pvz-Rx-G8w" firstAttribute="trailing" secondItem="S0n-Cv-9Sv" secondAttribute="trailing" constant="10" id="n1P-sk-9Ox"/>
                             <constraint firstItem="cuy-ys-EM4" firstAttribute="leading" secondItem="pvz-Rx-G8w" secondAttribute="leading" constant="10" id="niq-rX-vW6"/>
                             <constraint firstItem="pvz-Rx-G8w" firstAttribute="trailing" secondItem="YFM-dM-ced" secondAttribute="trailing" constant="10" id="pDg-BH-7aH"/>
                             <constraint firstItem="S8F-xt-Fa6" firstAttribute="leading" secondItem="pvz-Rx-G8w" secondAttribute="leading" id="qzj-7X-cAh"/>
@@ -365,6 +388,7 @@
                         <outlet property="markTaskAsFinishedSwitch" destination="UZI-42-hsa" id="yfk-Sb-TgX"/>
                         <outlet property="taskCategory" destination="s80-na-erZ" id="GIe-2m-e12"/>
                         <outlet property="taskDetail" destination="r8A-i5-Qzv" id="cKW-6E-GGp"/>
+                        <outlet property="taskDueDate" destination="S0n-Cv-9Sv" id="viF-U2-CIc"/>
                         <outlet property="taskPriority" destination="tjG-4H-cQu" id="9EL-8s-ppn"/>
                         <outlet property="taskTimerReminder" destination="9c8-EK-hnO" id="87O-2E-SX0"/>
                         <outlet property="taskTitle" destination="MHT-d9-Y2W" id="mTC-Cx-uvz"/>
@@ -476,7 +500,7 @@ Cg
                                     </fragment>
                                     <fragment>
                                         <string key="content">
-         - Image d'entête : Remind Corp. (www.remind.com)</string>
+         - Image d'entête : Remind Corp. (www.remind.com)          - Icône : https://icons8.com/icon/set/notification/dusk</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13" name=".AppleSystemUIFont"/>

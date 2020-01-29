@@ -72,9 +72,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         let entity = NSEntityDescription.entity(forEntityName: "Task", in: managedObjectContext!)!
         let currentItem = NSManagedObject(entity: entity, insertInto: managedObjectContext!)
         // 3
+        
         currentItem.setValue(title, forKeyPath: "taskTitle")
         currentItem.setValue(description, forKey: "taskDescription")
-        currentItem.setValue(dueDate, forKeyPath: "taskDueDate")
+        currentItem.setValue(dueDate, forKey: "taskDueDate")
         currentItem.setValue(category, forKey: "taskCategory")
         currentItem.setValue(priority, forKey: "taskPriority")
         currentItem.setValue(achivement, forKey: "taskAchived")
@@ -110,6 +111,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     }
     
     func remplissageCellule(currentItem: NSManagedObject, cell: ThisWeekTaskTableViewCell?){
+        let formatDateFr = DateFormatter()
+        formatDateFr.locale = Locale(identifier: "FR-fr")
+        formatDateFr.dateStyle = .medium
+        formatDateFr.timeStyle = .medium
+        
         let date = currentItem.value(forKeyPath: "taskDueDate") as! Date
         let dateNow = Date()
         
@@ -118,10 +124,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         let categoryOfTask = currentItem.value(forKey: "taskCategory") as? String
         var colorCodeForCategory: UIColor = UIColor.white
         switch categoryOfTask {
+            case "Catégorie 1":
+                colorCodeForCategory = UIColor.orange
             case "Catégorie 2":
                 colorCodeForCategory = UIColor.brown
+            case "Catégorie 3":
+                colorCodeForCategory = UIColor.yellow
             default:
-                colorCodeForCategory = UIColor.white
+                colorCodeForCategory = UIColor.lightGray
         }
         cell!.taskTitle.text = titleOfTask
         if date <= dateNow {
@@ -129,6 +139,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         }
         cell!.taskDescription.text = descriptionOfTask
         cell!.taskCategory.tintColor = colorCodeForCategory
+        cell!.taskDueDate.text = formatDateFr.string(from: currentItem.value(forKeyPath: "taskDueDate") as! Date)
     }
     
     /*
@@ -154,8 +165,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             let myIndexPath = self.thisWeekTasksTableView.indexPathForSelectedRow!
             let row = myIndexPath.row
             let currentItem = managedObjects[row]
+            
+            let formatDateFr = DateFormatter()
+            formatDateFr.locale = Locale(identifier: "FR-fr")
+            formatDateFr.dateStyle = .medium
+            formatDateFr.timeStyle = .medium
+            
             detailViewController.titleOfTask = currentItem.value(forKeyPath: "taskTitle") as! String
             detailViewController.detailOfTask = currentItem.value(forKeyPath: "taskDescription") as! String
+            detailViewController.dueDateOfTask = "Pour le \(formatDateFr.string(from: currentItem.value(forKeyPath: "taskDueDate") as! Date))"
             detailViewController.categoryOfTask = currentItem.value(forKeyPath: "taskCategory") as! String
             detailViewController.priorityOfTask = currentItem.value(forKeyPath: "taskPriority") as! String
         }

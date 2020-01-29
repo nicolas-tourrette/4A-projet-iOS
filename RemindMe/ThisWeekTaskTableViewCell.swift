@@ -13,7 +13,8 @@ class ThisWeekTaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskTitle: UILabel!
     @IBOutlet weak var taskDescription: UILabel!
     @IBOutlet weak var taskCategory: UIImageView!
-
+    @IBOutlet weak var taskDueDate: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
