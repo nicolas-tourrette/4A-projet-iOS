@@ -12,8 +12,8 @@ import CoreData
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     // Constantes de version
-    let version = "0.6"
-    let build = "12"
+    let version = "1.0"
+    let build = "14"
     let date = "Jan 31 2020"
     
     // Management objects for Core Data
