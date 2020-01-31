@@ -27,6 +27,7 @@ class DetailViewController: UIViewController {
     var dueDateOfTask = "Pour le --UNKNOWN DATE--"
     var categoryOfTask = ""
     var priorityOfTask = ""
+    var taskId: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +39,28 @@ class DetailViewController: UIViewController {
         taskDueDate.text = dueDateOfTask
         taskCategory.text = categoryOfTask
         taskPriority.text = priorityOfTask
+        
+        print("Task ID: \(taskId)")
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "deleteTask" {
+            let alert = UIAlertController(title: "Supprimer la tâche ?", message: "Voulez-vous vraiment supprimer définitivement cette tâche ?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Oui", comment: "Ceci supprimera définitivement la tâche."), style: .destructive, handler: { action in self.dismiss(animated: true, completion: nil) }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Non", comment: "Ceci gardera la tâche intacte."), style: .cancel))
+            self.present(alert, animated: true)
+            //let destViewController = segue.destination as! ViewController;
+            //destViewController.deleteData(taskId: taskId)  // -- NOT WORKING
+        }
+    }
+    
+    @IBAction func markedAsAchived(_ sender: Any) {
+        let alert = UIAlertController(title: "Marquer la tâche achevée ?", message: "Voulez-vous vraiment marquer cette tâche comme achevée et définitivement l'archiver ?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Oui", comment: "Ceci achèvera la tâche la tâche."), style: .destructive, handler: { action in self.dismiss(animated: true, completion: nil) }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Non", comment: "Ceci gardera la tâche intacte."), style: .cancel))
+        self.present(alert, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

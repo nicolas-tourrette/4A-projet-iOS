@@ -12,9 +12,9 @@ import CoreData
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     // Constantes de version
-    let version = "0.5"
-    let build = "150"
-    let date = "Jan 27 2020"
+    let version = "0.6"
+    let build = "12"
+    let date = "Jan 31 2020"
     
     // Management objects for Core Data
     var managedObjectContext:NSManagedObjectContext?
@@ -87,6 +87,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+    }
+
+    /*
+        Function to delete a task with its ID
+        NOT WORKING !
+     */
+    func deleteData(taskId: Int){
+        print(taskId)
+        loadData()
+        print(managedObjects)
+        managedObjectContext!.delete(managedObjects[taskId] as NSManagedObject)
+        managedObjects.remove(at: taskId)
+        do { try managedObjectContext?.save() }
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        loadData()
+        thisWeekTasksTableView.reloadData()
     }
     
     /*
@@ -176,6 +194,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
             detailViewController.dueDateOfTask = "Pour le \(formatDateFr.string(from: currentItem.value(forKeyPath: "taskDueDate") as! Date))"
             detailViewController.categoryOfTask = currentItem.value(forKeyPath: "taskCategory") as! String
             detailViewController.priorityOfTask = currentItem.value(forKeyPath: "taskPriority") as! String
+            detailViewController.taskId = row
         }
         else{
             print("Action inconnue...")
@@ -184,27 +203,35 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     
     // This function will add a new task in the app database with Core Data
     @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
-        // We find the addPhoto view controller
-        let sourceViewController = unwindSegue.source as! AddTaskViewController
-        // Use data from the view controller which initiated the unwind segue
-        
         // Save action
         if unwindSegue.identifier == "saveNewTask" {
+            let sourceViewController = unwindSegue.source as! AddTaskViewController
             print("Saving new task in database...")
             saveData(title: sourceViewController.taskTitle.text!, description: sourceViewController.taskDetail.text, dueDate: sourceViewController.taskDueDate.date, category: sourceViewController.category, priority: sourceViewController.priority)
             loadData()
             thisWeekTasksTableView.reloadData()
         }
         else if unwindSegue.identifier == "saveTask" {
+            //let sourceViewController = unwindSegue.source as! AddTaskViewController
             print("Editing an existing task...")
             loadData()
             thisWeekTasksTableView.reloadData()
             // TO BE DONE
         }
+        // Delete a task
+        else if unwindSegue.identifier == "deleteTask" {
+            
+        }
         else{
             print("Action inconnue...")
         }
     }
-
+    
+    @IBAction func reloadData(_ sender: Any) {
+        print("Reloading datas...")
+        loadData()
+        thisWeekTasksTableView.reloadData()
+    }
+    
 }
 
